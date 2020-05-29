@@ -15,7 +15,7 @@ app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({extended : true}));
  
 var server = app.listen(3000, function(){
-    console.log("hey its working");
+    //console.log("hey its working");
     logger.info("app launched in port 3000");
 });
 
@@ -58,7 +58,7 @@ app.get("/restaurant_details",function(req,res){
 	var entity_id=data.location_suggestions[0].entity_id;
 	var url="https://developers.zomato.com/api/v2.1/location_details?entity_id="+entity_id+"&entity_type="+entity_type+"&apikey=ccfa077c40cc8120e254980fad6adade";
 	request(url,function(error,response,body){
-        console.log(url);
+       // console.log(url);
 		if(!error&&response.statusCode==200)
 		{
                         var data=JSON.parse(body);
@@ -78,9 +78,9 @@ app.get("/restaurant_details",function(req,res){
                                         data2.push(obj);
                         }
                         ( async () => {
-                                    console.log(data2[0]);
+                                   // console.log(data2[0]);
                                     const data1 = await swiggy.bestseller();
-                                    console.log(data1[0]);
+                                    //console.log(data1[0]);
                                     let rest = [];
                                     if(data1 == null ||data1.length == 0)
                                     {
@@ -131,19 +131,19 @@ app.get("/restaurant_details",function(req,res){
 });
 
 app.get("/items", function(req, res){
-    console.log(req.body);
+   // console.log(req.body);
     var sgylink = req.query.sgylink;
     var ztolink = req.query.ztolink;
-    console.log(sgylink);
-    console.log(ztolink);
+   // console.log(sgylink);
+   // console.log(ztolink);
     logger.info("Request recieved at /items", sgylink);
     if(sgylink == "")
     {
-        console.log("sgylink is null");
+      //  console.log("sgylink is null");
     }
     else if(ztolink == "")
     {
-        console.log(" ztolink is null");
+      //  console.log(" ztolink is null");
     }
 });
 
