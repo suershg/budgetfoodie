@@ -12,7 +12,7 @@ const zomato = {
         console.log('Starting the scraper..');
 
         browser = await puppeteer.launch({
-            headless: false
+            headless: true
         })
         
         page = await browser.newPage();
